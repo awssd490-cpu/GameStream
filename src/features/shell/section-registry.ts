@@ -8,6 +8,7 @@ import {
   Library,
   MessageCircle,
   Settings,
+  Swords,
   Users,
 } from "lucide-react";
 
@@ -17,6 +18,7 @@ export type SectionId =
   | "messages"
   | "hubs"
   | "streams"
+  | "sessions"
   | "library"
   | "downloads"
   | "settings";
@@ -95,6 +97,15 @@ export const sections: SectionDef[] = [
     description: "Watch your friends play live",
     group: "library",
     links: [{ label: "Live Now", to: "/streams" }],
+  },
+  {
+    id: "sessions",
+    label: "Game Sessions",
+    icon: Swords,
+    match: "/sessions",
+    description: "People actively playing together",
+    group: "library",
+    links: [{ label: "Live Now", to: "/sessions" }, { label: "Party Finder", to: "/sessions" }],
   },
   {
     id: "library",

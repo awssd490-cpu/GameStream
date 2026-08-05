@@ -7,6 +7,7 @@ import {
   Library,
   MessageCircle,
   Settings,
+  Swords,
   Users,
 } from "lucide-react";
 
@@ -92,6 +93,14 @@ export function buildPaletteCommands(): PaletteGroup[] {
           keywords: "watch live broadcast",
           icon: Clapperboard,
           onSelect: () => navigateToPath("/streams"),
+        },
+        {
+          id: "nav-sessions",
+          label: "Browse Game Sessions",
+          hint: "Party Finder",
+          keywords: "party lobby play together lfg",
+          icon: Swords,
+          onSelect: () => navigateToPath("/sessions"),
         },
         {
           id: "nav-library",

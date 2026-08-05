@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Gamepad2,
@@ -8,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { friendById } from "./friends-data";
+import { activeSessionForFriend, gameById } from "@/features/sessions/sessions-data";
 import { GAME_ACTIONS, GameActionButton } from "./game-actions";
 import { StatusAvatar, statusGroupLabel } from "./presence";
 import { useFriendsStore } from "@/stores/friends-store";
@@ -39,6 +41,7 @@ export function FriendProfileDrawer() {
   const selectedId = useFriendsStore((s) => s.selectedFriendId);
   const closeProfile = useFriendsStore((s) => s.closeProfile);
   const friend = selectedId ? friendById(selectedId) : undefined;
+  const activeSession = friend ? activeSessionForFriend(friend.id) : undefined;
 
   return (
     <AnimatePresence>
@@ -117,6 +120,29 @@ export function FriendProfileDrawer() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Current session (data-only integration with sessions) */}
+                  {activeSession && (
+                    <Link
+                      to="/sessions"
+                      onClick={closeProfile}
+                      className="mt-4 flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition-colors hover:border-blurple/40"
+                    >
+                      <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blurple/40 to-surface-4">
+                        <Gamepad2 className="size-5 text-white/80" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-semibold">{activeSession.title}</p>
+                        <p className="truncate text-xs text-muted-foreground">
+                          {gameById(activeSession.gameId)?.title} · {activeSession.size}/{activeSession.capacity} in party
+                        </p>
+                      </div>
+                      <span className="flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-red-400">
+                        <span className="size-1.5 animate-pulse rounded-full bg-red-500" />
+                        Live
+                      </span>
+                    </Link>
+                  )}
 
                   {/* Game actions */}
                   <p className="mt-4 px-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">

@@ -26,6 +26,9 @@ const HubDetailPage = lazy(() =>
 const StreamsPage = lazy(() =>
   import("@/features/streams/StreamsPage").then((m) => ({ default: m.StreamsPage })),
 );
+const SessionsPage = lazy(() =>
+  import("@/features/sessions/SessionsPage").then((m) => ({ default: m.SessionsPage })),
+);
 const LibraryPage = lazy(() =>
   import("@/features/library/LibraryPage").then((m) => ({ default: m.LibraryPage })),
 );
@@ -55,6 +58,7 @@ export const router = createHashRouter([
       { path: "/hubs", element: <HubsPage /> },
       { path: "/hubs/:hubId", element: <HubDetailPage /> },
       { path: "/streams", element: <StreamsPage /> },
+      { path: "/sessions", element: <SessionsPage /> },
       { path: "/library", element: <LibraryPage /> },
       { path: "/downloads", element: <DownloadsPage /> },
       { path: "/settings", element: <SettingsPage /> },

@@ -3,6 +3,7 @@ import {
   CalendarDays,
   ChevronDown,
   ChevronRight,
+  Gamepad2,
   Hash,
   Lock,
   Megaphone,
@@ -13,8 +14,14 @@ import {
 } from "lucide-react";
 
 import { hubById, type HubChannel } from "./hubs-data";
+import { gameById, sessions } from "@/features/sessions/sessions-data";
 import { PlaceholderState } from "@/components/shared/PlaceholderState";
 import { cn } from "@/lib/utils";
+
+/** Sessions belonging to this hub (data-only integration — no backend). */
+function hubSessionsFor(hubId: string) {
+  return sessions.filter((s) => s.hubId === hubId && s.status !== "lobby");
+}
 
 function ChannelRow({ channel, active }: { channel: HubChannel; active?: boolean }) {
   return (
@@ -177,6 +184,50 @@ export function HubDetailPage() {
                 <p className="text-sm text-muted-foreground">No voice rooms yet.</p>
               )}
             </div>
+          </section>
+
+          {/* Live sessions in this hub */}
+          <section className="mt-6">
+            <div className="flex items-center justify-between">
+              <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                <Gamepad2 className="size-4" />
+                Live Sessions
+              </h2>
+              <Link to="/sessions" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+                View all →
+              </Link>
+            </div>
+            {hubSessionsFor(hub.id).length > 0 ? (
+              <ul className="mt-3 space-y-1">
+                {hubSessionsFor(hub.id).map((session) => {
+                  const game = gameById(session.gameId);
+                  return (
+                    <li key={session.id}>
+                      <Link
+                        to="/sessions"
+                        className="flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-white/5"
+                      >
+                        <span className={cn("flex size-9 items-center justify-center rounded-lg bg-gradient-to-br", game?.tint ?? "")}>
+                          <Gamepad2 className="size-4 text-white/60" />
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-medium">{session.title}</p>
+                          <p className="truncate text-xs text-muted-foreground">
+                            {game?.title} · {session.size}/{session.capacity} in party
+                          </p>
+                        </div>
+                        <span className="flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-red-400">
+                          <span className="size-1.5 animate-pulse rounded-full bg-red-500" />
+                          Live
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="mt-3 text-sm text-muted-foreground">No live sessions in this hub right now.</p>
+            )}
           </section>
 
           {/* Roster preview */}
