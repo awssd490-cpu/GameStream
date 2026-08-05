@@ -12,9 +12,17 @@
   "app": {
     "windows": [
       {
-        "title": "game-stream",
-        "width": 800,
-        "height": 600
+        "title": "GameStream",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 940,
+        "minHeight": 600,
+        "center": true,
+        "resizable": true,
+        "fullscreen": false,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "backgroundColor": "#11141c"
       }
     ],
     "security": {

@@ -10,7 +10,17 @@
       "Bash(tasklist)",
       "Bash(taskkill //IM game-stream.exe //F)",
       "Bash(taskkill //IM cargo.exe //F)",
-      "Bash(taskkill //IM rustc.exe //F)"
+      "Bash(taskkill //IM rustc.exe //F)",
+      "Bash(taskkill //F //IM node.exe //FI \"WINDOWTITLE ne *\")",
+      "Bash(cargo check *)",
+      "Bash(tasklist //FI \"IMAGENAME eq game-stream.exe\")",
+      "Bash(curl -s http://localhost:1420/)",
+      "Bash(powershell -NoProfile -Command \"\nAdd-Type -AssemblyName System.Windows.Forms\nAdd-Type -AssemblyName System.Drawing\n\\\\$bounds = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds\n\\\\$bmp = New-Object System.Drawing.Bitmap\\(\\\\$bounds.Width, \\\\$bounds.Height\\)\n\\\\$g = [System.Drawing.Graphics]::FromImage\\(\\\\$bmp\\)\n\\\\$g.CopyFromScreen\\(0, 0, 0, 0, \\\\$bounds.Size\\)\n\\\\$bmp.Save\\('D:\\\\projects\\\\GameStream\\\\milestone1-shot.png', [System.Drawing.Imaging.ImageFormat]::Png\\)\n\\\\$g.Dispose\\(\\); \\\\$bmp.Dispose\\(\\)\nWrite-Output 'screenshot saved'\n\")",
+      "Bash(pnpm exec *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(node -e ' *)",
+      "Bash(powershell -NoProfile -Command \"\nAdd-Type -AssemblyName System.Windows.Forms\nAdd-Type -AssemblyName System.Drawing\n\\\\$bounds = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds\n\\\\$bmp = New-Object System.Drawing.Bitmap\\(\\\\$bounds.Width, \\\\$bounds.Height\\)\n\\\\$g = [System.Drawing.Graphics]::FromImage\\(\\\\$bmp\\)\n\\\\$g.CopyFromScreen\\(0, 0, 0, 0, \\\\$bounds.Size\\)\n\\\\$bmp.Save\\('D:\\\\projects\\\\GameStream\\\\m11-shot.png', [System.Drawing.Imaging.ImageFormat]::Png\\)\n\\\\$g.Dispose\\(\\); \\\\$bmp.Dispose\\(\\)\nWrite-Output 'saved'\n\")",
+      "Bash(echo \"TSC EXIT: $?\")"
     ]
   }
 }
