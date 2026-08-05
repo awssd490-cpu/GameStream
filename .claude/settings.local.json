@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx shadcn@latest init --yes)",
+      "Bash(npx shadcn@latest init --help)",
+      "Bash(npx shadcn@latest init -b base -p nova -y)",
+      "Bash(pnpm build *)",
+      "Bash(pnpm tauri *)",
+      "Bash(pnpm add *)",
+      "Bash(tasklist)",
+      "Bash(taskkill //IM game-stream.exe //F)",
+      "Bash(taskkill //IM cargo.exe //F)",
+      "Bash(taskkill //IM rustc.exe //F)"
+    ]
+  }
+}
