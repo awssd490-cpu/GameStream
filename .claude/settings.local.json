@@ -20,7 +20,8 @@
       "Bash(echo \"EXIT: $?\")",
       "Bash(node -e ' *)",
       "Bash(powershell -NoProfile -Command \"\nAdd-Type -AssemblyName System.Windows.Forms\nAdd-Type -AssemblyName System.Drawing\n\\\\$bounds = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds\n\\\\$bmp = New-Object System.Drawing.Bitmap\\(\\\\$bounds.Width, \\\\$bounds.Height\\)\n\\\\$g = [System.Drawing.Graphics]::FromImage\\(\\\\$bmp\\)\n\\\\$g.CopyFromScreen\\(0, 0, 0, 0, \\\\$bounds.Size\\)\n\\\\$bmp.Save\\('D:\\\\projects\\\\GameStream\\\\m11-shot.png', [System.Drawing.Imaging.ImageFormat]::Png\\)\n\\\\$g.Dispose\\(\\); \\\\$bmp.Dispose\\(\\)\nWrite-Output 'saved'\n\")",
-      "Bash(echo \"TSC EXIT: $?\")"
+      "Bash(echo \"TSC EXIT: $?\")",
+      "Bash(powershell -NoProfile -Command \"\nAdd-Type -AssemblyName System.Windows.Forms\nAdd-Type -AssemblyName System.Drawing\n\\\\$bounds = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds\n\\\\$bmp = New-Object System.Drawing.Bitmap\\(\\\\$bounds.Width, \\\\$bounds.Height\\)\n\\\\$g = [System.Drawing.Graphics]::FromImage\\(\\\\$bmp\\)\n\\\\$g.CopyFromScreen\\(0, 0, 0, 0, \\\\$bounds.Size\\)\n\\\\$bmp.Save\\('D:\\\\projects\\\\GameStream\\\\m2-home.png', [System.Drawing.Imaging.ImageFormat]::Png\\)\n\\\\$g.Dispose\\(\\); \\\\$bmp.Dispose\\(\\)\nWrite-Output 'saved home shot'\n\")"
     ]
   }
 }
